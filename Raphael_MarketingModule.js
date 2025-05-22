@@ -112,11 +112,12 @@ addCampaign: function(name, type, discount, customDate) {
     });
 
     
-    console.log(`Campaign '${name}' added successfully!`);
-    console.log(`- Type: ${type}`);
-    console.log(`- Discount: ${discount}%`);
-    console.log(`- Created: ${createdDate}`);
-    console.log();
+   console.log("Campaign '" + name + "' added successfully!");
+console.log("- Type: " + type);
+console.log("- Discount: " + discount + "%");
+console.log("- Created: " + createdDate);
+console.log();
+
 },
 
 
@@ -171,21 +172,23 @@ applyDiscount: function(price, campaignName, userId) {
             savedAmount: discountAmount
         };
 
-        console.log(`applyDiscount on $${price} using '${campaignName}':`);
-        console.log(result);
-        console.log();
+        console.log("applyDiscount on $" + price + " using '" + campaignName + "':");
+console.log(result);
+console.log();
+
         return result;
     }
 
-    // If no valid campaign found
+
     const noDiscount = {
         originalPrice: price,
         finalPrice: price,
         message: "No active campaign applied"
     };
-    console.log(`applyDiscount on $${price} using '${campaignName}':`);
-    console.log(noDiscount);
-    console.log();
+   console.log("applyDiscount on $" + price + " using '" + campaignName + "':");
+console.log(noDiscount);
+console.log();
+
     return noDiscount;
 },
 
@@ -216,10 +219,12 @@ expireCampaign: function(name, customEndDate) {
         campaign.active = false;
         campaign.endDate = customEndDate || new Date().toLocaleDateString(); // Set end date (use today's if not given)
         this.expiredCampaigns.push(campaign); 
-        console.log(`Campaign '${name}' expired on ${campaign.endDate}.`);
-           console.log(); //  for spacing
+        console.log("Campaign '" + name + "' expired on " + campaign.endDate + ".");
+
+           console.log(); 
     } else {
-        console.log(`Error: No active campaign found with the name '${name}'.`); 
+        console.log("Error: No active campaign found with the name '" + name + "'.");
+
     }
 },
 
@@ -245,13 +250,16 @@ trackView: function(campaignName, userId) {
     for (let i = 0; i < this.campaigns.length; i++) {
         if (this.campaigns[i].name === campaignName) {
             this.campaigns[i].views.push(userId);
-            console.log(`User '${userId}' viewed campaign '${campaignName}'.`);
-           console.log(`Viewers:`, this.campaigns[i].views);
+          console.log("User '" + userId + "' viewed campaign '" + campaignName + "'.");
+
+           console.log("Viewers:", this.campaigns[i].views);
+
 console.log(); 
             return;
         }
     }
-    console.log(`Campaign '${campaignName}' not found.\n`);
+    console.log("Campaign '" + campaignName + "' not found.\n");
+
 },
 
 
@@ -298,7 +306,8 @@ rankCampaignsByEngagementRate: function() {
     result.forEach(r => {
         let rateText = r.engagementRate !== null ? r.engagementRate.toFixed(2) : "null"; // Format rate to 2 decimal places, or show 'N/A' if no views to avoid divide-by-zero
 
-        console.log(`- ${r.name}: ${r.views} views, ${r.usage} usages, Engagement Rate: ${rateText}`);
+        console.log("- " + r.name + ": " + r.views + " views, " + r.usage + " usages, Engagement Rate: " + rateText);
+
     });
 
     // Find the most effective campaign based on engagement rate
@@ -313,7 +322,8 @@ rankCampaignsByEngagementRate: function() {
     });
 
     if (best) {
-        console.log(`Most effective campaign: ${best.name} (Engagement Rate: ${bestRate.toFixed(2)})`);
+        console.log("Most effective campaign: " + best.name + " (Engagement Rate: " + bestRate.toFixed(2) + ")");
+
     } else {
         console.log("No campaign had any views, so no engagement rate could be calculated.");
     }
@@ -327,24 +337,25 @@ rankCampaignsByEngagementRate: function() {
     // 6. View detailed campaign statistics
     // ============================================================
     getCampaignStats: function(name) {
-        for (let i = 0; i < this.campaigns.length; i++) {
-            if (this.campaigns[i].name === name) {
-                const c = this.campaigns[i];
-                console.log(`getCampaignStats for '${name}':`);
-                console.log(`Name: ${c.name} (${c.type})`);
-                console.log(`Discount: ${c.discount}%`);
-                console.log(`Status: ${c.active ? "Active" : "Expired"}`);
-                console.log(`Created: ${c.createdDate}`);
-                if (c.endDate) console.log(`Ended: ${c.endDate}`);
-                console.log(`Views: ${c.views.length}`);
-                console.log(`Viewers: ${c.views}`);
-                console.log();
-                return c;
-            }
+    for (let i = 0; i < this.campaigns.length; i++) {
+        if (this.campaigns[i].name === name) {
+            const c = this.campaigns[i];
+            console.log("getCampaignStats for '" + name + "':");
+            console.log("Name: " + c.name + " (" + c.type + ")");
+            console.log("Discount: " + c.discount + "%");
+            console.log("Status: " + (c.active ? "Active" : "Expired"));
+            console.log("Created: " + c.createdDate);
+            if (c.endDate) console.log("Ended: " + c.endDate);
+            console.log("Views: " + c.views.length);
+            console.log("Viewers:", c.views);
+            console.log();
+            return c;
         }
-        console.log(`No campaign found with the name '${name}'.\n`);
-        return null;
-    },
+    }
+    console.log("No campaign found with the name '" + name + "'.\n");
+    return null;
+},
+
 
 
 
@@ -368,10 +379,12 @@ getUserUsedPromotions: function(userId) {
     result.forEach(p => totalSaved += p.savedAmount);
 
     // Display results
-    console.log(`getUserUsedPromotions for '${userId}':`);
+    console.log("getUserUsedPromotions for '" + userId + "':");
+
     console.log("Promotions Used:");
     result.forEach(p => {
-        console.log(`- ${p.campaignName} — Saved $${p.savedAmount.toFixed(2)} on ${p.date}`);
+        console.log("- " + p.campaignName + " — Saved $" + p.savedAmount.toFixed(2) + " on " + p.date);
+
     });
     console.log("Total Saved: $" + totalSaved.toFixed(2));
     console.log();
@@ -399,7 +412,8 @@ getAllCampaigns: function() {
     console.log("getAllCampaigns:");
     this.campaigns.forEach(c => {
         const status = c.active ? "Active" : "Expired";
-        console.log(`- ${c.name} (${c.type}) — ${c.discount}% — ${status}`);
+        console.log("- " + c.name + " (" + c.type + ") — " + c.discount + "% — " + status);
+
     });
     console.log();
     return this.campaigns;
@@ -449,12 +463,14 @@ getEndingSoonCampaigns: function(daysleft) {
         }
     });
 
-    console.log(`getEndingSoonCampaigns (within ${daysleft} days):`);
+   console.log("getEndingSoonCampaigns (within " + daysleft + " days):");
+
     if (result.length === 0) {
         console.log("No campaigns ending soon.");
     } else {
         result.forEach(c => {
-            console.log(`- ${c.name} ends on ${c.endDate} (${c.daysLeft} days left)`);
+            console.log("- " + c.name + " ends on " + c.endDate + " (" + c.daysLeft + " days left)");
+
         });
     }
     console.log();

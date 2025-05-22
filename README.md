@@ -7,7 +7,7 @@ This Node.js module simulates a **marketing campaign management system** for an 
 
 ---
 
-## 🔧 Setup Instructions
+##  Setup Instructions
 
 1. Make sure you have **Node.js installed**.
 2. Clone or download this repository to your local machine.
@@ -55,7 +55,7 @@ marketing.getEndingSoonCampaigns(10);
 6.Run your script using:node app.js
 
 
-## 📦 Function Descriptions
+##  Function Descriptions
 
 ### 1. addCampaign(name, type, discount, customDate)
 Adds a new campaign to the list.
@@ -124,4 +124,16 @@ Lists campaigns ending within `X` days.
 - `daysLeft` (Number)
 
 
+## References
 
+- MDN Web Docs – Date Object  
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+- MDN Web Docs – Date Constructor (Date(year, monthIndex, day))  
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date
+
+- W3Schools – Math.ceil() Method  
+  https://www.w3schools.com/jsref/jsref_ceil.asp
+
+- W3Schools – String split() Method  
+  https://www.w3schools.com/jsref/jsref_split.asp
