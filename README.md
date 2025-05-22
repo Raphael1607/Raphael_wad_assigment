@@ -1,12 +1,127 @@
-# Assignment 1
 
-You will only need one file, ie, your node module, for this assignment.
 
-In this readme file, describe how to use your node module. It could be similar to **app.js** from Lab2, where you call some functions in your node module and display the output. Describe how to setup your node module, if any. Describe how to call the functions, what parameters required and so on.
 
-You can press **Ctrl+Shift+V** in this file in Visual Studio Code to see a live preview of the readme file.
+# Raphael_MarketingModule
 
-For some tips in formatting text in readme file, refer to https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+This Node.js module simulates a **marketing campaign management system** for an e-commerce application. It allows for creating, managing, and analyzing marketing campaigns, tracking user interactions, and determining campaign effectiveness based on real-time data.
 
-# References
-Provide the references that you have used to support your assignment. 
+---
+
+## 🔧 Setup Instructions
+
+1. Make sure you have **Node.js installed**.
+2. Clone or download this repository to your local machine.
+3. Place `Raphael_MarketingModule.js` in your working directory.
+4. Create an `app.js` file and require the module like so:
+const marketing = require("./Raphael_MarketingModule.js");
+at the top of the file 
+
+5. add this into your app.js 
+```js
+
+const marketing = require("./Raphael_MarketingModule.js");
+
+console.log("=== Marketing Module Test ===\n");
+
+// 1. Add a new campaign
+marketing.addCampaign("Limited Flash", "Limited", 25, "21/5/2025");
+
+// 2. Apply discount to a purchase
+marketing.applyDiscount(500, "Black Friday", "user123");
+
+// 3. Expire a campaign
+marketing.expireCampaign("Black Friday", "30/5/2025");
+
+// 4. Track a user's view of a campaign (optional demo)
+marketing.trackView("Flash Deal", "user456");
+
+// 5. Rank campaigns by engagement rate
+marketing.rankCampaignsByEngagementRate();
+
+// 6. View detailed campaign statistics
+marketing.getCampaignStats("Flash Deal");
+
+// 7. Get all promotions used by a user
+marketing.getUserUsedPromotions("user123");
+
+// 8. List all campaigns (summary)
+marketing.getAllCampaigns();
+
+// 9. Get campaigns ending soon (within 10 days)
+marketing.getEndingSoonCampaigns(10);
+``` 
+
+
+6.Run your script using:node app.js
+
+
+## 📦 Function Descriptions
+
+### 1. addCampaign(name, type, discount, customDate)
+Adds a new campaign to the list.
+
+- `name` (String): Campaign title
+- `type` (String): Campaign category (e.g. "Limited")
+- `discount` (Number): Discount percentage
+- `customDate` (String, optional): Date in `dd/mm/yyyy`; defaults to today
+
+---
+
+### 2. applyDiscount(price, campaignName, userId)
+Applies discount to a price using a campaign.
+
+- `price` (Number): Original price
+- `campaignName` (String): Name of an active campaign
+- `userId` (String): User applying the discount
+
+---
+
+### 3. expireCampaign(name, customEndDate)
+Marks a campaign as expired.
+
+- `name` (String): Campaign name
+- `customEndDate` (String, optional): End date; defaults to today
+
+---
+
+### 4. trackView(campaignName, userId)
+Logs a user's view of a campaign.
+
+- `campaignName` (String)
+- `userId` (String)
+
+---
+
+### 5. rankCampaignsByEngagementRate()
+Ranks campaigns by engagement (usage ÷ views).  
+No parameters.
+
+---
+
+### 6. getCampaignStats(name)
+Shows details for a specific campaign.
+
+- `name` (String)
+
+---
+
+### 7. getUserUsedPromotions(userId)
+Lists all discounts a user has used.
+
+- `userId` (String)
+
+---
+
+### 8. getAllCampaigns()
+Prints all campaign summaries.  
+No parameters.
+
+---
+
+### 9. getEndingSoonCampaigns(daysLeft)
+Lists campaigns ending within `X` days.
+
+- `daysLeft` (Number)
+
+
+
